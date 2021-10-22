@@ -1,9 +1,9 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const Loader = () => (
   <div className="loader">
-    <Spin />
+    <LoadingOutlined style={{ fontSize: 40, color: 'orange' }} spin />;
   </div>
 );
 
