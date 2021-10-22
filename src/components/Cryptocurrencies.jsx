@@ -3,10 +3,10 @@ import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
 
-import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import moment from 'moment';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { useGetCryptosQuery } from '../services/cryptoApi';
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 20 : 100;
@@ -24,7 +24,6 @@ const Cryptocurrencies = ({ simplified }) => {
 
   if (isFetching) return <Loader />;
 
-
   return (
     <>
       {!simplified && (
@@ -37,12 +36,12 @@ const Cryptocurrencies = ({ simplified }) => {
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
             <Link key={currency.id} to={`/crypto/${currency.id}`}>
               <Card style={{borderRadius: '1rem'}} title={`${currency.rank}. ${currency.name}`} extra={<img className="crypto-image" src={currency.iconUrl} />} hoverable>
-                <p>Price ${millify(currency.price)}</p>
+                <p>Price $ {millify(currency.price)} </p>
                 <p>Market Capital: {millify(currency.marketCap)}</p>
                 <p>Daily Change: {currency.change}%</p>
-                <p>Launch Date : {moment(currency.firstSeen).format("Do MMM YYYY") }</p>
+                <p>Launch Date : {moment(currency.firstSeen).format('Do MMM YYYY') }</p>
                 <p>All time High Price:  ${millify(currency.allTimeHigh.price)}</p>
-                <p>All time High Date: {moment(currency.allTimeHigh.timestamp).format("Do MMM YYYY") }</p>
+                <p>All time High Date: {moment(currency.allTimeHigh.timestamp).format('Do MMM YYYY') }</p>
                 <div style={{textAlign: 'center'}}> 
                   <span style={{color:'blue', marginRight: '1rem' }}>More Details</span>
                   <ArrowRightOutlined />
